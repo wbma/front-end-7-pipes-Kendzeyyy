@@ -1,8 +1,12 @@
-
-<input [(ngModel)]="mediaService.username">
+<form (submit)="register()">
+<input name="username" [(ngModel)]="mediaService.username" placeholder="Username">
 <br>
-<input [(ngModel)]="mediaService.password">
+<input name="password" [(ngModel)]="mediaService.password" placeholder="Password">
 <br>
-<button (click)="mediaService.login()">Login</button>
+<input name="email" [(ngModel)]="mediaService.email" placeholder="Email">
+<br>
 
+<button type="submit" (click)="mediaService.login()">Login</button>
+</form>
 
+{{mediaService.status}}
