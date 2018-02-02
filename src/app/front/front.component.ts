@@ -20,5 +20,4 @@ export class FrontComponent implements OnInit {
       this.router.navigate(['login']);
     });
   }
-
 }
