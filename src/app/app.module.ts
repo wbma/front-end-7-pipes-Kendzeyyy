@@ -12,6 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
 import {FormsModule} from '@angular/forms';
 import {MediaService} from './services/media.service';
 import {HttpClientModule} from '@angular/common/http';
+import { UploadComponent } from './upload/upload.component';
 
 
 @NgModule({
@@ -21,13 +22,14 @@ import {HttpClientModule} from '@angular/common/http';
     TopBarComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [MediaService],
   bootstrap: [AppComponent]

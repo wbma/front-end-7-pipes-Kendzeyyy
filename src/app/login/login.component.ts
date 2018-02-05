@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['front']);
       }, (error: HttpErrorResponse) => {
         console.log(error);
-        this.router.navigate(['login']);
       });
     }
   }

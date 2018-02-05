@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {resolvePtr} from 'dns';
+import {Router} from '@angular/router';
+
 
 @Injectable()
 export class MediaService {
-  Http: any;
 
   status: string;
-  router: any;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   username: string;
   password: string;
   email: string;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public login() {
     console.log('uname: ' + this.username);
@@ -34,7 +33,7 @@ export class MediaService {
     this.http.post(this.apiUrl + '/login', body, settings).subscribe(response => {
       console.log(response['token']);
       localStorage.setItem('token', response['token']);
-      this.router.navigate('front');
+      this.router.navigate(['front']);
     }, (error: HttpErrorResponse) => {
       console.log(error.error.message);
       this.status = error.error.message;
@@ -45,12 +44,22 @@ export class MediaService {
     return this.http.post(this.apiUrl + '/users', user);
   }
 
+
     getUserData() {
       const settings = {
         headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
       };
       return this.http.get(this.apiUrl + '/users/user', settings);
     }
+
+    upload(formData) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    return this.http.post(this.apiUrl + '/media', formData, settings);
+  }
+
+
 
     }
 

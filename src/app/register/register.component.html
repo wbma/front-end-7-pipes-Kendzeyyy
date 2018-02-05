@@ -1,3 +1,10 @@
-<p>
-  register works!
-</p>
+<form (submit)="register()">
+  <input name="username" [(ngModel)]="mediaService.username" placeholder="Username">
+  <br>
+  <input name="password" [(ngModel)]="mediaService.password" placeholder="Password">
+  <br>
+  <input name="email" [(ngModel)]="mediaService.email" placeholder="Email">
+  <br>
+
+  <button type="submit" (click)="mediaService.login()">Login</button>
+</form>
