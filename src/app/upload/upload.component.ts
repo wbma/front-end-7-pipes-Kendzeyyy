@@ -41,10 +41,9 @@ export class UploadComponent implements OnInit {
 
       this.mediaService.upload(formData).subscribe(data => {
         console.log(data);
-      },(e:HttpErrorResponse) => {
+      }, (e: HttpErrorResponse) => {
         console.log(e);
       });
-
     }
 
 

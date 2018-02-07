@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 @Injectable()
 export class MediaService {
 
+  test = 'test123';
   status: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   username: string;
@@ -59,9 +60,17 @@ export class MediaService {
     return this.http.post(this.apiUrl + '/media', formData, settings);
   }
 
-
-
+    getNewFiles() {
+      const settings = {
+        headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+      };
+      return this.http.get(this.apiUrl + '/media', settings);
     }
+
+  getMediaFiles() {
+    return this.http.get(this.apiUrl + '/media');
+  }
+}
 
 
 

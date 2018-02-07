@@ -13,10 +13,10 @@ export class RegisterComponent implements OnInit {
   user: User = {
     username: '',
     password: '',
-    email: ''
+    email: '',
   };
 
-  constructor(private mediaService: MediaService) {
+  constructor(public mediaService: MediaService) {
 
     this.mediaService.register(this.user).subscribe(response => {
       console.log(response);
