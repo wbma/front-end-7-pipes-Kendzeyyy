@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MediaService} from '../services/media.service';
 import {Router} from '@angular/router';
+import {start} from 'repl';
 
 // import {HttpErrorResponse} from '@angular/common/http';
 
@@ -12,9 +13,8 @@ import {Router} from '@angular/router';
 })
 export class FrontComponent implements OnInit {
   printThis: string;
-  mediaArray: any;
   mediaFiles: any;
-  picIndex = 0;
+
 
   constructor(private mediaService: MediaService,
               private router: Router, ) { }
@@ -32,19 +32,11 @@ export class FrontComponent implements OnInit {
 
     this.printThis = this.mediaService.test;
 
-    this.mediaService.getMediaFiles().subscribe( result => {
-        this.mediaFiles = result;
-        this.picIndex += 10;
+    this.mediaService.getMediaFiles(0, 10).subscribe( result => {
+      this.mediaFiles = result;
       }, err => {
         console.log(err);
       });
     }
-
-
-
-
-
-
-
   }
 

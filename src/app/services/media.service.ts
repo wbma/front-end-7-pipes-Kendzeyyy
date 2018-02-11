@@ -67,8 +67,9 @@ export class MediaService {
       return this.http.get(this.apiUrl + '/media', settings);
     }
 
-  getMediaFiles() {
-    return this.http.get(this.apiUrl + '/media');
+  getMediaFiles(start: number, amount: number) {
+
+    return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
   }
 }
 
